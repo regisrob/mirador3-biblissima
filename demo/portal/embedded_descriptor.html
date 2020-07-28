@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>France, Paris, Bibliothèque nationale de France, Département des manuscrits, Grec 2179 (Biblissima) | Biblissima</title>
+    <meta name="description" content="Biblissima">
+    <link rel="canonical" href="https://portail.biblissima.fr/ark:/43093/mdatabb3605104930480bf6f8459432d620c016011d96">
+    <!-- Twitter Card -->
+    <!-- OGP -->
+    <!-- CSS communs à tous les sites -->
+    <link href="//code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <link href="//static.biblissima.fr/vendor/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//static.biblissima.fr/css/common.css" rel="stylesheet">
+    <link href="//static.biblissima.fr/css/print.css" rel="stylesheet" media="print">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" href="//static.biblissima.fr/images/favicons/apple-touch-icon-152x152.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="//static.biblissima.fr/images/favicons/mstile-144x144.png">
+    <link rel="icon" type="image/png" href="//static.biblissima.fr/images/favicons/favicon.png">
+    <!--[if IE]><link rel="shortcut icon" href="//static.biblissima.fr/images/favicons/favicon.ico"><![endif]-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/leaflet.css">
+    <link rel="stylesheet" href="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/leafletcluster/MarkerCluster.css">
+    <link rel="stylesheet" href="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/leafletcluster/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- CSS principal du portail -->
+    <link rel="stylesheet" href="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/css/main.css">
+    <link rel="stylesheet" href="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/cubes.mandragore.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <style type="text/css">
+      #m3-iframe {
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2),0 1px 1px 0 rgba(0,0,0,0.2),0 2px 1px -1px rgba(0,0,0,0.2);
+      }
+    </style>
+    <!-- <script src="https://unpkg.com/mirador@3.0.0-beta.9/dist/mirador.min.js"></script>
+    <script src="/src/m3-config.js"></script> -->
+    
+</head>
+<!-- la classe cubicweb sert à identifier le portail des autres sites dans les scripts communs, en attendant les vraies classes générées par cubicweb.  -->
+<body class="stored_manuscript cubicweb entity-page">
+    <div class="menu-bbma-wrapper">
+        <nav class="menu-bbma" id="menuBbma">
+            <div class="header">
+                <h2>Découvrir Biblissima</h2>
+                <button class="material-icons menu-bbma-close-btn fa fa-close" id="menuBbmaCloseBtn"></button>
+            </div>
+            <ul>
+                <li>
+                    <a href="https://biblissima.fr">
+                        <h3>Accueil Biblissima</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://portail.biblissima.fr">
+                        <h3>Portail Biblissima</h3>
+                        <p>Point d'entrée sur le patrimoine écrit du Moyen Âge et de la Renaissance en Occident du VIII<sup>e</sup> au XVIII<sup>e</sup> siècle</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://iiif.biblissima.fr/collections/">
+                        <h3>IIIF Collections</h3>
+                        <p>Moteur de recherche de manuscrits et livres anciens numérisés et intéropérables</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://data.biblissima.fr/w/Accueil">
+                        <h3>Référentiels Biblissima</h3>
+                        <p>Plateforme collaborative de gestion de publication des données d'autorité Biblissima</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://outils.biblissima.fr">
+                        <h3>Outils Biblissima</h3>
+                        <p>Aide à la lecture et apprentissage des langues anciennes, outils et environnements de travail en XML</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://iiif.biblissima.fr/#services-iiif">
+                        <h3>IIIF360</h3>
+                        <p>Service d’expertise autour des standards IIIF</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="footer">
+            <p><a href="https://projet.biblissima.fr/fr/newsletter">S'inscrire à la newsletter</a></p>
+            <p><a href="https://projet.biblissima.fr/fr/contact">Nous contacter</a></p>
+            <p><a href="https://projet.biblissima.fr">Projet</a> | <a href="https://demos.biblissima.fr">Démos</a> | <a href="https://doc.biblissima.fr">Documentation</a></p>
+        </div>
+    </div>
+    <!-- HEADER -->
+    <header id="navbar" role="banner" class="header-no-responsive navbar">
+        <nav class="top-menu navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="material-icons fa fa-bars menu-bbma-btn" id="menuBbmaBtn"></button>
+                    <h1>
+                        <a href="https://biblissima.fr" class="logo">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCQ0UxQzI3REU1MjkxMUU1QkQ5QUYxNjQxNTFFMTk0RCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCQ0UxQzI3RUU1MjkxMUU1QkQ5QUYxNjQxNTFFMTk0RCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkJDRTFDMjdCRTUyOTExRTVCRDlBRjE2NDE1MUUxOTREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkJDRTFDMjdDRTUyOTExRTVCRDlBRjE2NDE1MUUxOTREIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+fWSW0AAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" alt="Biblissima">
+                        </a>
+                    </h1>
+                </div>
+        </nav>
+        <nav class="main-menu navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <h1>
+                        <a href="https://portail.biblissima.fr/fr/" class="logo">
+                            Portail Biblissima
+                        </a>
+                    </h1>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-topbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-topbar-collapse">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explorer</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/bbma.view?facet:etype-facet=Collection&vid=search-results">Collections historiques</a>
+                                </li>
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/bbma.view?facet:etype-facet=Manuscript&facet:etype-facet=Incunabula&vid=search-results">Manuscrits et imprimés anciens</a>
+                                </li>
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/bbma.view?facet:etype-facet=Illumination&facet:etype-facet=Mark&vid=search-results">Enluminures et marques</a>
+                                </li>
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/bbma.view?facet:bbma.agenttype=person&facet:bbma.agenttype=library&facet:bbma.agenttype=corporate%20body&vid=search-results">Personnes et collectivités</a>
+                                </li>
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/bbma.view?facet:etype-facet=Work&vid=search-results">Œuvres</a>
+                                </li>
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/bbma.view?facet:etype-facet=Edition&vid=search-results">Éditions</a>
+                                </li>
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/bbma.view?facet:etype-facet=Location&vid=search-results">Lieux</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Visualiser</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/origin-map">Carte des lieux d'origine et de publication</a>
+                                </li>
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/repomap-locations">Carte des lieux de conservation</a>
+                                </li>
+                                <li>
+                                    <a href="https://portail.biblissima.fr/fr/desc-map">Carte des lieux représentés dans les enluminures</a>
+                                </li>
+                            </ul>
+                        </li>
+                        </li>
+                    </ul>
+                    <div class="secondary-tools">
+                        <ul class="language-switcher">
+                            <li class="active">
+                                <a href="https://portail.biblissima.fr/fr/ark:/43093/mdatabb3605104930480bf6f8459432d620c016011d96" rel="nofollow">fr</a>
+                            </li>
+                            <li>
+                                <a href="https://portail.biblissima.fr/en/ark:/43093/mdatabb3605104930480bf6f8459432d620c016011d96" rel="nofollow">en</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="clearfix"></div>
+        <div class="banner">
+            <div class="container">
+                <div class="banner-content">
+                    <form id="searchbar" action="https://portail.biblissima.fr/fr/bbma.view" method="get">
+                        <!-- <label for="global_search">Rechercher</label> -->
+                        <div class="form-wrapper">
+                            <div class="select">
+                                <select name="facet:etype-facet">
+                                    <option value="">Tout Biblissima</option>
+                                    <option value="Manuscript">Manuscrits et imprimés anciens</option>
+                                    <option value="Work">Œuvres</option>
+                                    <option value="Person">Personnes</option>
+                                    <option value="Location">Lieux</option>
+                                    <option value="Edition">Éditions</option>
+                                    <option value="CorporateBody">Collectivités</option>
+                                    <option value="Collection">Collections historiques</option>
+                                </select>
+                            </div>
+                            <div class="search-wrapper">
+                                <div class="input-wrapper">
+                                    <input type="text" name="q" id="global_search" value="" placeholder="Entrer une œuvre, une personne, un lieu, une cote...">
+                                    <input type="hidden" name="vid" value="search-results" />
+                                    <span id="search_lang" data-lang="fr" />
+                                    <span id="global_search_icon" class="fa"></span>
+                                </div>
+                                <button type="submit"><span class="fa fa-search"></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--       <div id='languages' class='dropdown'>
+          <span data-toggle="dropdown" class="dropdown-toggle">fr<span class="lang-selector"></span></span>
+        <ul class="dropdown-menu">
+          
+            <li>
+              <a href="https://portail.biblissima.fr/en/ark:/43093/mdatabb3605104930480bf6f8459432d620c016011d96" rel="nofollow">en</a>
+            </li>
+          
+        </ul>
+      </div> -->
+    </header>
+    <!-- Contenu principal de la page -->
+    <div class="container">
+        <div class="row">
+            <div class="main col-sm-12">
+                <section class="main-content">
+                    <div class="affix-wrapper" id="myAffix-wrapper">
+                        <ul class="nav table-of-contents" id="myAffix">
+                            <li><a class="anchor" href="#presentation">Présentation</a></li>
+                            <li><a class="anchor" href="#texts">Textes du manuscrit</a></li>
+                            <li><a class="anchor" href="#owners">Anciens possesseurs</a></li>
+                            <li><a class="anchor" href="#illuminations">Enluminures et décors</a></li>
+                            <li><a class="anchor" href="#collections">Anciennement dans</a></li>
+                            <li><a class="anchor" href="#bibliography">Bibliographie</a></li>
+                            <li><a class="anchor" href="#content">Présentation du contenu</a></li>
+                            <li><a class="anchor" href="#provenance">Historique de la conservation</a></li>
+                            <li><a class="anchor" href="#visualisations">Vie du livre</a></li>
+                            <li><a class="anchor" href="#records">Sources des données</a></li>
+                            <li><a class="anchor" href="#dataexports">Exports</a></li>
+                        </ul>
+                    </div>
+                    <section class="presentation" id="presentation">
+                        <h1>
+                            France, Paris, Bibliothèque nationale de France, Département des manuscrits, Grec 2179
+                        </h1>
+                        <div class="bbma-qid-uri-wrapper">
+                            <p class="bbma-qid-uri"><span>Référentiel d'autorité Biblissima : </span><a href="https://data.biblissima.fr/entity/Q54263">https://data.biblissima.fr/entity/Q54263</a></p>
+                        </div>
+                        <div class="media-body">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <ul class="description">
+                                        <li><strong>Autre forme de la cote : </strong>
+                                            <ul>
+                                                <li>Paris. Bibliothèque nationale de France, Département des manuscrits, gr., 2179</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Conservé à :</strong>
+                                            <span><a href="https://portail.biblissima.fr/fr/ark:/43093/cdatae0659fc5d278f341884d0c3886f2c07afb434c96" title="">Paris. Bibliothèque nationale de France, Département des manuscrits</a></span></li>
+                                        <li><strong>Date de fabrication :</strong>
+                                            <span>
+                                                <ul class="inline-links">
+                                                    <li>0801/0900
+                                                        (Source : <a href="https://portail.biblissima.fr/fr/database/3127" title="">BnF, Département des manuscrits</a>)</li>
+                                                    <li>8e siècle
+                                                        (Source : <a href="https://portail.biblissima.fr/fr/database/3133" title="">Pinakes</a>)</li>
+                                                    <li>IX siècle
+                                                        (Source : <a href="https://portail.biblissima.fr/fr/database/3127" title="">BnF, Département des manuscrits</a>)</li>
+                                                </ul>
+                                            </span></li>
+                                        <li><strong>Lieu de fabrication :</strong>
+                                            <span>
+                                                <ul class="inline-links">
+                                                    <li><a href="https://portail.biblissima.fr/fr/ark:/43093/ldata138a6cf6121b52b52a1fe359e39149561bd69cec" title="">sinaï ou palestine</a></li>
+                                                </ul>
+                                            </span></li>
+                                        <li><strong>Nombre de feuillets :</strong>
+                                            <span>171 fol.</span></li>
+                                        <li><strong>Décoration : </strong>
+                                            <ul>
+                                                <li>Peint.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Écriture : </strong>
+                                            <ul>
+                                                <li>Onciale.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="add-to-cart">
+                                        <div class="add-to-cart-wrapper">
+                                            <label for="c-mdatabb3605104930480bf6f8459432d620c016011d96">Ma sélection</label>
+                                            <div class="checkbox-wrapper" data-title="France, Paris, Bibliothèque nationale de France, Département des manuscrits, Grec 2179" data-manifest="https://gallica.bnf.fr/iiif/ark:/12148/btv1b525002505/manifest.json" data-id="mdatabb3605104930480bf6f8459432d620c016011d96" data-url="https://portail.biblissima.fr/fr/ark:/43093/mdatabb3605104930480bf6f8459432d620c016011d96">
+                                                <input type="checkbox" class="cart-checkbox" id="c-mdatabb3605104930480bf6f8459432d620c016011d96">
+                                                <label for="c-mdatabb3605104930480bf6f8459432d620c016011d96"></label>
+                                            </div>
+                                        </div>
+                                        <!--<label for="c-mdatabb3605104930480bf6f8459432d620c016011d96">Ma sélection</label>
+            <div class="checkbox-wrapper" data-title="France, Paris, Bibliothèque nationale de France, Département des manuscrits, Grec 2179" data-id="mdatabb3605104930480bf6f8459432d620c016011d96" data-url="https://portail.biblissima.fr/fr/ark:/43093/mdatabb3605104930480bf6f8459432d620c016011d96">
+              <input type="checkbox" class="cart-checkbox" id="c-mdatabb3605104930480bf6f8459432d620c016011d96">
+              <label for="c-mdatabb3605104930480bf6f8459432d620c016011d96"></label>
+            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="mirador3" id="mirador3" data-manifest="https://gallica.bnf.fr/iiif/ark:/12148/btv1b525002505/manifest.json"></div> -->
+                        
+                        <!-- DEFAULT (book) -->
+                        <!-- <iframe class="m3-iframe" src="http://localhost:1234/?manifest=https://gallica.bnf.fr/iiif/ark:/12148/btv1b525002505/manifest.json" title="Image viewer" marginwidth="0" marginheight="0" scrolling="no" width="100%" height="600px" frameborder="0" allow="fullscreen" allowfullscreen></iframe> -->
+                        <!-- DESCRIPTOR -->
+                        <iframe id="m3-iframe" src="../?manifest=https://portail.biblissima.fr/iiif/manifest/ark:/43093/desc57cb76cd3739a24a9277b6669d95b5f3a590e771&context=descriptor" title="Image viewer" marginwidth="0" marginheight="0" scrolling="no" width="100%" height="600px" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+                        <!-- COLLECTION -->
+                        <!-- <iframe class="m3-iframe" src="http://localhost:1234/?iiif-content=https://portail.biblissima.fr/iiif/collection/ark:/43093/coldata5151005ea5833e5a05e2639cbb210946cb7e0609&context=collection" title="Image viewer" marginwidth="0" marginheight="0" scrolling="no" width="100%" height="600px" frameborder="0" allow="fullscreen" allowfullscreen></iframe> -->
+
+                        <section class="numerisation">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="numerisation-iiif">
+                                        <a class="icon-iiif" href="/info-iiif?manifest=https://gallica.bnf.fr/iiif/ark:/12148/btv1b525002505/manifest.json" rel="nofollow noopener noreferrer" title="Glisser-déposer cette icône dans un visualiseur IIIF">
+                                            <img src="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/img/logo-iiif.png" alt="IIIF Drag and Drop Icon" width="28" height="28">
+                                        </a>
+                                        <input value="https://gallica.bnf.fr/iiif/ark:/12148/btv1b525002505/manifest.json" id="iiifUrl" readonly>
+                                        <button class="clipboard manual-tooltip" data-toggle="tooltip" data-clipboard-target="#iiifUrl" aria-label="Copy to clipboard"><span class="fa fa-clipboard" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 clearfix numerisation-surrogate">
+                                    <p><strong>Numérisation : </strong></p>
+                                    <ul>
+                                        <li><a href="https://gallica.bnf.fr/ark:/12148/btv1b525002505">https://gallica.bnf.fr/ark:/12148/btv1b525002505</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                    <section class="texts" id="texts">
+                        <h1>
+                            Textes du manuscrit
+                        </h1>
+                        <p class="db-source"><span>Source des données : <a href="https://portail.biblissima.fr/fr/database/3131">Mandragore</a></span></p>
+                        <div class="part row">
+                            <div class="col-sm-12">
+                                <h2><a href="https://portail.biblissima.fr/fr/ark:/43093/tdatadb535030951d9cf043b47f26abd54a35ba82d46b" title="">Dioscoride (00..-00..) : Sur la matière médicale [Langue non renseignée].</a></h2>
+                                <ul>
+                                    <!---->
+                                    <li><strong>Œuvre associée : </strong><a href="https://portail.biblissima.fr/fr/ark:/43093/oedata4cf842fec28de614d9855798f1865916a27cd0de" title="">Dioscoride (00..-00..) : Sur la matière médicale</a></li>
+                                    <li><strong>Auteur du texte : </strong><a href="https://portail.biblissima.fr/fr/ark:/43093/pdata69df89a76f500b39c33ab270de8e36b1c54d677a" title="">Dioscoride (00..-00..)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="db-source"><span>Source des données : <a href="https://portail.biblissima.fr/fr/database/3133">Pinakes</a></span></p>
+                        <div class="part row">
+                            <div class="col-sm-12">
+                                <h2><a href="https://portail.biblissima.fr/fr/ark:/43093/tdata8fe1985b6a7466c1c033683df8edaa8b9d4c2dd5" title="">Dioscoride (00..-00..) : Sur la matière médicale [Grec].</a></h2>
+                                <ul>
+                                    <!---->
+                                    <li><strong>Œuvre associée : </strong><a href="https://portail.biblissima.fr/fr/ark:/43093/oedata4cf842fec28de614d9855798f1865916a27cd0de" title="">Dioscoride (00..-00..) : Sur la matière médicale</a></li>
+                                    <li><strong>Auteur du texte : </strong><a href="https://portail.biblissima.fr/fr/ark:/43093/pdata69df89a76f500b39c33ab270de8e36b1c54d677a" title="">Dioscoride (00..-00..)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="owners" id="owners">
+                        <h1>
+                            Anciens possesseurs
+                        </h1>
+                        <ul>
+                            <li><a href="https://portail.biblissima.fr/fr/ark:/43093/cdata7c16050c202a86579c89f38f45451470f7e127bd">Fontainebleau. Librairie royale</a> </li>
+                            <li><a href="https://portail.biblissima.fr/fr/ark:/43093/cdata759abf9fe3ca8458ff9a202f54a97d579aba2fcf">Paris. Bibliothèque royale (14..-1792)</a> </li>
+                        </ul>
+                    </section>
+                    <section class="illuminations" id="illuminations">
+                        <h1>
+                            Enluminures et décors
+                        </h1>
+                        <ul class="list-inline-block-container">
+                            <li><a href="https://portail.biblissima.fr/fr/ark:/43093/ifdata9e4887b6da02890a29dced601cfa37a5c8bc24f7">Flore : absinthe (Paris, BnF, Grec 2179 f.17)</a></li>
+                            <li><a href="https://portail.biblissima.fr/fr/ark:/43093/ifdatac689ed22c5fc58c493d11a36d3de04a108efda98">Flore : acanthe (Paris, BnF, Grec 2179 f.13)</a></li>
+                            <li><a href="https://portail.biblissima.fr/fr/ark:/43093/ifdata73f618d27eaaac18aac2a0f4c517c1914bb0670b">Flore : acanthe (Paris, BnF, Grec 2179 f.13)</a></li>
+                            <li><a href="https://portail.biblissima.fr/fr/ark:/43093/ifdataea0e17282a440aa73fc631f1b017226f3b038b0f">Flore : acanthe (Paris, BnF, Grec 2179 f.14)</a></li>
+                            <li><a href="https://portail.biblissima.fr/fr/ark:/43093/ifdata35073dc8a84e7a93c354ba4cdb899eb11ed1837a">Flore : acanthe (Paris, BnF, Grec 2179 f.14v)</a></li>
+                            <li><a href="https://portail.biblissima.fr/fr/ark:/43093/ifdatac13fb9e042553945a44e218a013da8ff363bbf91">Flore : acétabulaire (Paris, BnF, Grec 2179 f.60v)</a></li>
+                            <li><a href="https://portail.biblissima.fr/fr/ark:/43093/ifdata8ed2b2347b790479d48948abbaec97318e59dc67">Flore : ache (Paris, BnF, Grec 2179 f.36)</a></li>
+                        </ul>
+                    </section>
+                    <section class="collections" id="collections">
+                        <h1>
+                            Anciennement dans
+                        </h1>
+                        <ul>
+                            <li>
+                                <a href="https://portail.biblissima.fr/fr/ark:/43093/coldata11f86a3eecdaf6ba3fee52bdcec9545d9fb1e919">Collection de Fontainebleau. Librairie royale</a>
+                            </li>
+                            <li>
+                                <a href="https://portail.biblissima.fr/fr/ark:/43093/coldata398982c86f3e3e5002f83b24fcb21850bb695bb5">Collection de Paris. Bibliothèque royale (14..-1792)</a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="bibliography" id="bibliography">
+                        <h1>
+                            Bibliographie
+                        </h1>
+                        <ul>
+                            <li>M. Cronier, &laquo; Quelques aspects de l'histoire du texte du De materia medica de Dioscoride &raquo;, dans A. Roselli (éd), <i>Ecdotica e ricezione dei testi medici greci. Atti del V Convegno Internazionale, Napoli 1-2 ottobre 2004</i>, Collectanea 24, Napoli, M. D'Auria, 2006, p. 43-65</li>
+                            <li>A. Aletta, &laquo; Per una puntualizzazione cronologica del Morgan 652 (Dioscoride) &raquo;, dans B. Atsalos (éd), <i>Actes du VIe Colloque International de Paléographie Grecque (Drama, 21-27 septembre 2003)</i>, Vivlioamphiastis - Annexe 1, Athêna, Société hellénique de reliure, 2008, p. 771-787</li>
+                            <li>M. Cronier, &laquo; L'Herbier alphabétique grec de Dioscoride: quelques remarques sur sa genèse et ses sources textuelles &raquo;, dans A. Ferraces Rodríguez (éd), <i>Fito-zooterapia antigua y altomedieval: textos y doctrinas</i>, A Coruna, Universidade da Coruña, 2009, p. 35-59</li>
+                            <li>D. Fausti, &laquo; Su alcune traduzioni cinquecentesche di Dioscoride: da Ermolao Barbaro a Pietro Andrea Mattioli &raquo;, dans I. Garofalo (éd), <i>Sulla tradizione indiretta dei testi medici greci. Atti del III seminario internazionale di Siena, Certosa di Pontignano, 18-19 settembre 2009</i>, Biblioteca di Galenos 3, Pisa, Roma, Fabrizio Serra, 2010, p. 181-205</li>
+                            <li>A. Touwaide, &laquo; The development of Paleologan Renaissance. An analysis based on Dioscorides’ De materia medica &raquo;, dans M. Cacouros (éd), <i>Philosophie et sciences à Byzance de 1204 à 1453. Actes de la Table Ronde organisée au XXe Congrès International d’Etudes Byzantines (Paris, 2001)</i>, Orientalia Lovaniensia Analecta 146, Leuven, Paris, Dudley (MA), Peeters, 2006, p. 189-224</li>
+                            <li>D. Muratore, <i>La biblioteca del cardinale Niccolò Ridolfi</i>, Hellenica 32, Alessandria, Edizioni dell'Orso, 2009</li>
+                            <li>M. Cronier, &laquo; Un manuscrit méconnu du 'De materia medica' de Dioscoride: New York, Pierpont Morgan Library, M. 652 &raquo;, <i>Revue des études grecques</i>, 125, 2012, p. 95-130</li>
+                            <li>S. Lucà, S. Lucà, &laquo; Testi medici e tecnico-scientifici del Mezzogiorno greco &raquo;, 2012, p. 551-605</li>
+                            <li>A. Džurova, <i>Le rayonnement de Byzance. Les manuscrits grecs enluminés des Balkans (VIè-XVIIIè siècles), Catalogue d'exposition (XXIIe Congrès International d'Études Byzantines, Sofia, 22-27 août 2011)</i>, Sofia, Galerie Nationale d'Art étranger, 2011</li>
+                            <li>A. Aletta, &laquo; Un codice poco noto in minuscola libraria antica: il Morgan 655 &raquo;, <i>Bollettino della Badia greca di Grottaferrata</i>, 55, 2001, p. 43-62</li>
+                            <li>E. Crisci, &laquo; La produzione libraria nelle aree orientali di Bisanzio nei secoli VII e VIII : i manoscritti superstiti &raquo;, dans G. Prato (éd), <i>I manoscritti greci tra riflessione e dibattito : Atti del 5 Colloquio internazionale di paleografia greca, Cremona, 4-10 ottobre 1998</i>, Papyrologica Florentina 31, Firenze, Gonnelli, 2000, p. 3-28</li>
+                            <li>T. Martínez Manzano, &laquo; De Corfú a Venecia: el itinerario primero del Dioscórides de Salamanca &raquo;, <i>Medioevo greco</i>, 12, 2012, p. 133-154</li>
+                            <li>E. Vallet (éd), <i>Lumières de la sagesse. Ecoles médiévales d'Orient et d'Occident</i>, Paris, Publications de la Sorbonne - Institut du Monde arabe, 2013</li>
+                            <li>A. Touwaide, &laquo; Un recueil grec de pharmacologie du Xe siècle illustré au XIVe siècle: le Vaticanus gr. 284 &raquo;, <i>Scriptorium</i>, 39, 1985, p. 13-56</li>
+                            <li>A. Touwaide, &laquo; Un manuscrit athonite du Περὶ ὕλης ἰατρικῆς de Dioscoride. L'Athous Megistis Lavras Ω 75 &raquo;, <i>Scriptorium</i>, 45, 1991, p. 122-127</li>
+                            <li>M. Wellmann, <i>Pedanii Dioscuridis Anazarbei De Materia Medica Libri quinque. Volumen II quo continentur libri III et IV</i>, Berlin, Weidmann, 1906 <a href="http://www2.biusante.parisdescartes.fr/livanc/?cote=65865x02&do=chapitre" target="_blank">(Version en ligne)</a></li>
+                            <li>L. Perria, <i>Γραφίς. Per una storia della scrittura greca libraria (secoli IV a.C. - XVI d.C)</i>, Quaderni di Νέα Ῥώμη 1, Roma-Città del Vaticano, Università degli Studi di Roma "Tor Vergata" - Biblioteca Apostolica Vaticana, 2011</li>
+                            <li>D. Harlfinger, &laquo; Weitere Beispiele frühester Minuskel &raquo;, <i>I manoscritti greci tra riflessione e dibattito : Atti del 5 Colloquio internazionale di paleografia greca, Cremona, 4-10 ottobre 1998</i>, Papyrologica Florentina 31, Firenze, Gonnelli, 2000, p. 153-156, Taf. 1-18</li>
+                            <li>E. Crisci, <i>Scrivere greco fuori d’Egitto: Ricerche sui manoscritti greco-orientali di origine non egitziana dal IV secolo a. C. al VII d. C.</i>, Papyrologica Florentina 27, Firenze, Gonnelli, 1996</li>
+                            <li>M. Cronier, &laquo; Bizans’tan Araplara Dioskorides’in De Materia Medicası’nın Elyazması Geleneği The Manuscript Tradition of Dioscorides’ De Materia Medica from Byzantium to the Arabs &raquo;, <i>Hayat Kısa, Sanat Uzun. Bizans’ta Şifa Sanatı. Life Is Short, Art Long. The Art of Healing in Byzantium</i>, Pera Müzesi Publication 73, Istanbul, Pera Museum, 2015, p. 134-151</li>
+                            <li>L. Perria, <i>Repertorio dei manoscritti greci di area orientale</i>, Messina, 2000</li>
+                            <li>M. Cronier, &laquo; Comment Dioscoride est-il arrivé en Occident? A propos d'un manuscrit byzantin, de Constantinople à Fontainebleau &raquo;, <i>Νέα Ῥώμη</i>, 10, 2013, p. 185-209</li>
+                            <li>L. Perria, &laquo; Scritture e codici di origine orientale (Palestina, Sinai) dal IX al XIII secolo. Rapporto preliminare &raquo;, <i>Tra Oriente e Occidente. Scritture e libri greci fra le regioni orientali di Bisanzio et l'Italia</i>, Testi e Studi Bizantino-Neoellenici 14, Roma, 2003, p. 65-80</li>
+                            <li>G. Parpulov, &laquo; The codicology of ninth-century Greek manuscripts &raquo;, <i>Semitica et Classica</i>, 8, 2015, p. 165-170</li>
+                            <li>M. Cronier, &laquo; Transcrire l’arabe en grec. À propos des annotations du Parisinus gr. 2179 (Dioscoride) &raquo;, <i>Manuscripta graeca et orientalia. Mélanges monastiques et patristiques en l'honneur de Paul Géhin</i>, Orientalia Analecta Lovanensia 243, Leuven, Peeters, 2016, p. 247-265</li>
+                            <li>A. Binggeli, &laquo; Les trois David, copistes arabes de Palestine &raquo;, dans A. Binggeli (éd)A. Boud'hors (éd)M. Cassin (éd), <i>Manuscripta Graeca et Orientalia. Mélanges monastiques et patristiques en l'honneur de Paul Géhin</i>, Orientalia Lovaniensia Analecta 243, Peeters, 2016, p. 79-117</li>
+                            <li>E. Crisci, &laquo; Papiro e pergamena nella produzione libraria in Oriente fra IV e VIII secolo. Materiali e riflessioni &raquo;, <i>Segno e Testo</i>, 1, 2003, p. 79-127</li>
+                        </ul>
+                    </section>
+                    <section class="content" id="content">
+                        <h1>
+                            Présentation du contenu
+                        </h1>
+                        <ul>
+                            <li>
+                                <p>Dioscoridis de materia medica libri II, (101) 204 — V, 124</p> <span class="source">(Source : <a href="https://portail.biblissima.fr/fr/database/3127" class="inline">BnF, Département des manuscrits</a>)</span>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="provenance" id="provenance">
+                        <h1>
+                            Historique de la conservation
+                        </h1>
+                        <ul>
+                            <li>
+                                <p>Fontebl.-Reg. 2130.</p> <span class="source">(Source : <a href="https://portail.biblissima.fr/fr/database/3127" class="inline">BnF, Département des manuscrits</a>)</span>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="visualisations" id="visualisations">
+                        <h1>
+                            Vie du livre
+                        </h1>
+                        <div id="leaflet-map" class="leaflet-map"></div>
+                    </section>
+                    <section class="records" id="records">
+                        <h1>
+                            Sources des données
+                        </h1>
+                        <ul>
+                            <li>
+                                BnF Archives et manuscrits
+                                &nbsp;: <a href="http://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j" target="_blank" rel="external noopener">http://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j</a>
+                                <!-- &nbsp;(<a href="https://portail.biblissima.fr/fr/database/3126">En savoir plus sur la ressource</a>) -->
+                            </li>
+                            <li>
+                                Mandragore
+                                &nbsp;: <a href="http://mandragore.bnf.fr/jsp/AfficheNoticeManArk.jsp?id=2888" target="_blank" rel="external noopener">http://mandragore.bnf.fr/jsp/AfficheNoticeManArk.jsp?id=2888</a>
+                                <!-- &nbsp;(<a href="https://portail.biblissima.fr/fr/database/3131">En savoir plus sur la ressource</a>) -->
+                            </li>
+                            <li>
+                                Pinakes
+                                &nbsp;: <a href="http://pinakes.irht.cnrs.fr/notices/cote/51808" target="_blank" rel="external noopener">http://pinakes.irht.cnrs.fr/notices/cote/51808</a>
+                                <!-- &nbsp;(<a href="https://portail.biblissima.fr/fr/database/3133">En savoir plus sur la ressource</a>) -->
+                            </li>
+                            <li>
+                                BnF, Département des manuscrits
+                                <!-- &nbsp;(<a href="https://portail.biblissima.fr/fr/database/3127">En savoir plus sur la ressource</a>) -->
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+            </div> <!-- .main -->
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+    <!-- Le content-bottom est une section annexe de la page, une sorte de "sur-footer" -->
+    <div class="content-bottom" id="dataexports">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Exports</h3>
+                    <p class="small">Exports RDF à venir&hellip;</p>
+                    <!--<ul>
+                  <li>Télécharger le RDF (expérimental) :
+                      <a href="https://portail.biblissima.fr/fr/ark:/43093/mdatabb3605104930480bf6f8459432d620c016011d96?vid=download-rdf-xml">RDF/XML</a>
+                      &nbsp;&mdash;&nbsp;
+                      <a href="https://portail.biblissima.fr/fr/ark:/43093/mdatabb3605104930480bf6f8459432d620c016011d96?vid=download-n3">N3</a>
+                  </li>
+                </ul>-->
+                </div> <!-- .col-sm-4 -->
+                <div class="col-sm-4">
+                    <h3>Permalien</h3>
+                    <p><input type="text" value="https://portail.biblissima.fr/ark:/43093/mdatabb3605104930480bf6f8459432d620c016011d96" id="permalink" readonly><button class="clipboard manual-tooltip" data-clipboard-target="#permalink" aria-label="Copier" title="Copier" data-toggle="tooltip"><span class="fa fa-clipboard" aria-hidden="true"></span></button></p>
+                </div>
+            </div> <!-- .row -->
+        </div>
+    </div>
+    <!-- Une modal et un button présent sur toutes les pages, faisant référence au panier de l'utilisateur (uniquement en front côté JS). Pour éviter tout problèmes de CSS, ils doivent être situés au plus haut du document (enfant direct du body) -->
+    <div class="cart-modal modal fade" id="cartModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span><span class="sr-only">Fermer</span></button>
+                    <h4 class="modal-title">Ma sélection</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Rempli en JS -->
+                </div>
+                <div class="modal-footer">
+                    <ul>
+                        <li id="openMirador" class="manual-tooltip" data-toggle="tooltip" title="Aucun objet numérisé dans votre sélection"><a href="/fr/mirador" target="_blank" class="btn btn-blue">Ouvrir dans Mirador</a></li>
+                        <li>
+                            <!--<a href="#" class="btn btn-blue">Exporter</a>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-button" id="cartButton">
+        <div class="number" id="number">Ma sélection <strong>0</strong></div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="region region-footer">
+                <div class="block block-menu block-footer-col-2 block-footer clearfix">
+                    <ul class="menu nav">
+                        <li class="first leaf">
+                            <a href="https://portail.biblissima.fr/fr/a-propos">À propos</a>
+                        </li>
+                        <li class="leaf">
+                            <a href="https://portail.biblissima.fr/fr/dev-log">Mises à jour et développements</a>
+                        </li>
+                        <li class="leaf">
+                            <a href="https://portail.biblissima.fr/fr/info-iiif">IIIF</a>
+                        </li>
+                        <li class="leaf">
+                            <a href="https://portail.biblissima.fr/fr/licences">Licences</a>
+                        </li>
+                        <li class="leaf">
+                            <a href="https://portail.biblissima.fr/fr/contact">Contact</a>
+                        </li>
+                        <li class="last leaf">
+                            <a href="https://portail.biblissima.fr/fr/mentions-legales">Mentions légales</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block block-menu block-footer-col-2 block-footer clearfix find-us">
+                    <p><strong>Suivez-nous</strong></p>
+                    <ul class="nav">
+                        <li><a href="https://twitter.com/biblissima" title="Twitter"><span class="fa fa-twitter"></span></a></li>
+                        <li><a href="http://www.slideshare.net/biblissima" title="Slideshare"><span class="fa fa-slideshare"></span></a></li>
+                        <li><a href="https://github.com/biblissima" title="Github"><span class="fa fa-github"></span></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCaHWzwUV0xBAQ-sEdE9EtKg" title="Youtube"><i class="fa fa-youtube-play"></i></a></li>
+                    </ul>
+                </div>
+                <div class="block block-block block-footer-col-4 block-footer clearfix">
+                    <div class="logo-ia">
+                        <a href="http://www.agence-nationale-recherche.fr/investissements-d-avenir/" target="_blank"></a>
+                        <p>Biblissima bénéficie d’une aide de l'Etat gérée par l'ANR au titre du programme « Investissements d'avenir », portant la référence ANR-­11-­EQPX-­0007.</p>
+                    </div>
+                </div>
+                <div class="block block-block block-footer-col-2 block-footer clearfix">
+                    <p><strong>Equipex Biblissima</strong>
+                        <br> Campus Condorcet
+                        <br> 8, cours des Humanités
+                        <br> 93322
+                        <br> Aubervilliers</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript commun à tous les sites Biblissima -->
+    <script type="text/javascript" src="//static.biblissima.fr/vendor/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="//static.biblissima.fr/vendor/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//static.biblissima.fr/js/common.js"></script>
+    <script src="//static.biblissima.fr/vendor/fontfaceobserver.js"></script>
+    <script>
+    (function(w) {
+        // if the class is already set, we're good.
+        if (w.document.documentElement.className.indexOf("fonts-loaded") > -1) {
+            return;
+        }
+        var fontA = new w.FontFaceObserver("Source Sans Pro", {
+            weight: 400
+        });
+        var fontB = new w.FontFaceObserver("Source Serif Pro", {
+            weight: 400
+        });
+        w.Promise
+            .all([fontA.check(), fontB.check()])
+            .then(function() {
+                w.document.documentElement.className += " fonts-loaded";
+            });
+    }(this));
+    </script>
+    <script type="text/javascript" src="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/cubicweb.js"></script>
+    <script type="text/javascript" src="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/cubes.mandragore.autocomplete.js"></script>
+    <script type="text/javascript" src="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/leaflet.js"></script>
+    <script type="text/javascript" src="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/leafletcluster/leaflet.markercluster.js"></script>
+    <script type="text/javascript" src="https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/fr.app-bundle.js"></script>
+    <style type="text/css">
+      /*.mirador3 {
+        position: relative;
+        width: 100%;
+        height: 600px;
+      }*/
+    </style>
+    <script>
+      var pageid = "140489146288080fb8df899f32443f38b8daaa3439e8105";
+      var BASE_URL = "https://portail.biblissima.fr/";
+      var DATA_URL = "https://portail.biblissima.fr/data/632623f3c7394fa212fd08d3d56ce10a/";
+      
+      // Mirador
+      //console.log(m3Config);
+      // var miradorSettings = m3Config;
+      // console.log(miradorSettings);
+      // miradorSettings.windows.push({
+      //   manifestId: 'https://gallica.bnf.fr/iiif/ark:/12148/btv1b525002505/manifest.json',
+      // });
+      // var miradorInstance = Mirador.viewer(miradorSettings, [
+      //   // OSDReferencesPlugin,
+      //   // miradorDownloadDialogPlugin,
+      //   // miradorDownloadPlugin,
+      //   //miradorImageToolsPlugin,
+      // ]);
+
+      //var miradorSettings = {"layout": "1x1", "windowSettings": {"fullScreen": true}, "workspaceType": "singleObject", "showAddFromURLBox": false, "mainMenuSettings": {"show": false}, "saveSession": false, "i18nPath": "locales/", "buildPath": "/data/mirador/", "data": [{"manifestUri": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b525002505/manifest.json"}], "id": "mirador", "windowObjects": [{"sidePanel": true, "loadedManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b525002505/manifest.json", "viewType": "ThumbnailsView", "canvasControls": {"annotations": {"annotationLayer": false}}, "displayLayout": false}]};
+    
+      var bookLifeData = {"owners": {"locations": [{"name": "Fontainebleau. Librairie royale", "title": "Fontainebleau. Librairie royale", "url": "https://portail.biblissima.fr/fr/ark:/43093/cdata7c16050c202a86579c89f38f45451470f7e127bd", "tooltip": "Fontainebleau. Librairie royale", "marker_icon": "residence-place", "coords": [48.40222, 2.70056]}, {"name": "Paris. Biblioth\u00e8que royale (14..-1792)", "title": "Paris. Biblioth\u00e8que royale (14..-1792)", "url": "https://portail.biblissima.fr/fr/ark:/43093/cdata759abf9fe3ca8458ff9a202f54a97d579aba2fcf", "tooltip": "Paris. Biblioth\u00e8que royale (14..-1792)", "marker_icon": "residence-place", "coords": [48.85341, 2.3488]}], "title": "Anciens possesseurs"}, "place": {"locations": [{"url": "https://portail.biblissima.fr/fr/ark:/43093/ldata138a6cf6121b52b52a1fe359e39149561bd69cec", "coords": null, "name": "sina\u00ef ou palestine (Source: Mandragore)", "tooltip": "sina\u00ef ou palestine", "title": "origin"}], "title": "lieu de fabrication"}, "repository": {"locations": [{"name": "Paris. Biblioth\u00e8que nationale de France, D\u00e9partement des manuscrits", "title": "Conserv\u00e9 \u00e0", "url": "https://portail.biblissima.fr/fr/ark:/43093/cdatae0659fc5d278f341884d0c3886f2c07afb434c96", "tooltip": "Paris. Biblioth\u00e8que nationale de France, D\u00e9partement des manuscrits", "marker_icon": "repository-place", "coords": [48.85341, 2.3488]}], "title": "\u00e9tablissement de conservation"}};
+    </script>
+</body>
+</html>
