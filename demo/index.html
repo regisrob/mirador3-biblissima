@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mirador Viewer - Biblissima</title>
+    <style type="text/css">
+    	body {
+    		margin: 0;
+    		padding: 0;
+    	}
+    	.m3-container {
+   			 border: 0; 
+		     height: 100vh;
+		     margin: 0; 
+		     position: relative;
+		     overflow-x: hidden;
+    		 overflow-y: hidden;
+    	}
+    </style>
+    <script type="text/javascript">
+   //  	window.onmessage = (event) => {
+   //  		console.log(`Received message: ${event.data}`);
+			// };
+			// window.addEventListener('message', event => {
+		 //    // IMPORTANT: check the origin of the data! 
+		 //    if (event.origin.startsWith('http://localhost:8080')) { 
+		 //        // The data was sent from your site.
+		 //        // Data sent with postMessage is stored in event.data:
+		 //        var manifests = event.data;
+		 //        //console.log(manifests); 
+		 //    }
+			// });
+
+			// var receiveMessage = function (event) {
+			//   console.log('toto');
+			//   console.log(event.data);
+			//   //console.log(`Received message: ${event.data}`);
+			//   // Do we trust the sender of this message?  (might be
+			//   // different from what we originally opened, for example).
+			//   if (event.origin !== "http://localhost:8080")
+			//     return;
+			//   console.log('titi');
+			//   // event.source is popup
+			//   // event.data is "hi there yourself!  the secret response is: rheeeeet!"
+			// }
+			// window.addEventListener('message', receiveMessage, true);
+    </script>
+  </head>
+  
+  <body>
+  	<div class="m3-container">
+    	<div id="m3"></div>
+    </div>
+    <!-- <script src="src/index.js"></script> -->
+    <script src="../dist/index.min.js"></script>
+
+  <!-- Piwik -->
+	<!-- <script type="text/javascript">
+	  var _paq = _paq || [];
+	  _paq.push(["trackPageView"]);
+	  _paq.push(["enableLinkTracking"]);
+	  _paq.push([function() {
+	    var self = this;
+	    function getOriginalVisitorCookieTimeout() {
+	      var now = new Date(),
+	      nowTs = Math.round(now.getTime() / 1000),
+	      visitorInfo = self.getVisitorInfo();
+	      var createTs = parseInt(visitorInfo[2]);
+	      var cookieTimeout = 33696000; // 13 mois en secondes
+	      var originalTimeout = createTs + cookieTimeout - nowTs;
+	      return originalTimeout;
+	    }
+	    this.setVisitorCookieTimeout( getOriginalVisitorCookieTimeout() );
+	  }]);
+	  (function() {
+	    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.biblissima.fr/";
+	    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+	    _paq.push(["setSiteId", "3"]);
+	    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+	    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+	<noscript><img src="https://piwik.biblissima.fr/piwik.php?idsite=3" style="border:0" alt="" /></noscript> -->
+	<!-- End Piwik -->
+ 	</body>
+</html>
