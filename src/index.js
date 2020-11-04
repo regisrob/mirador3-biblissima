@@ -5,8 +5,9 @@ import { miradorImageToolsPlugin } from 'mirador-image-tools';
 
 
 let params = new URL(document.location).searchParams;
-let iiifResourceUri = params.get('iiif-content') || params.get('manifest');
-let context = params.get("context");
+let iiifResource = params.get('iiif-content') || params.get('manifest');
+let initializedManifest = params.get('manifest');
+let context = params.get("context"); // possible values are: descriptor, collection
 let theme = params.get("theme");
 
 const config = {
@@ -72,7 +73,7 @@ const config = {
     defaultPosition: 'off',
   },
   window: {
-    allowClose: false,
+    allowClose: true,
     allowMaximize: false,
     allowFullscreen: true,
     sideBarOpen: true,
@@ -110,87 +111,51 @@ const config = {
 //   config.workspaceControlPanel.enabled = true;
 // }
 
-// An embed context is passed as a url param
-if (context) {
-  config.workspaceControlPanel.enabled = false;
-  config.workspace.type = 'single';
-}
-
 if (theme == 'light') {
   config.selectedTheme = 'light';
 }
 
 // A iiif resource is passed as a url param
-if (iiifResourceUri) {
+if (iiifResource) {
 
+  // populate the catalog
   config.catalog.push({
-    manifestId: iiifResourceUri,
+    manifestId: iiifResource,
   });
 
-  // Different embed contexts with variations in m3 config:
+  // Case of a single resource (no workspace)
   if (context !== 'collection') {
-    //config.workspace.type = 'mosaic';
+    config.window.allowClose = false;
+    config.workspace.type = 'single';
+    config.workspaceControlPanel.enabled = false;
     config.windows.push({
-      manifestId: iiifResourceUri,
+      manifestId: iiifResource,
     });
+  }
+
+  if (context == 'collection') {
+    // if a manifest is passed
+    if (initializedManifest) {
+      // display it in a single window
+      config.windows.push({
+        manifestId: initializedManifest,
+      });
+    } else {
+      // display the collection window w/ modal
+      config.windows.push({
+        manifestId: iiifResource,
+      });
+    }
   }
   
   if (context == 'descriptor') {
-    config.window.defaultSideBarPanel = 'info';
-    //config.thumbnailNavigation.defaultPosition = 'off';
+    config.window.defaultSideBarPanel = 'info'; // display the info panel by default
+    // config.thumbnailNavigation.defaultPosition = 'off';
     // config.window.defaultView = 'gallery';
-    //Object.assign(config, { galleryView: { height: 150 } });
-    //config.galleryView.height = 150;
+    // Object.assign(config, { galleryView: { height: 150 } });
+    // config.galleryView.height = 150;
   }
-
 }
-
-// demo workshop Naples
-// Object.assign(config.catalog, {
-//   'https://iiif.bodleian.ox.ac.uk/iiif/manifest/748a9d50-5a3a-440e-ab9d-567dd68b6abb.json': { provider:'Bodleian Libraries' },
-//   'https://iiif.bodleian.ox.ac.uk/iiif/manifest/79a953b7-40db-4ca0-a781-0f1f5df1b2a6.json': { provider:'Bodleian Libraries' },
-//   'https://scta.info/iiif/nhyjhg/cod-yu78uh/manifest': { provider:'SCTA' },
-//   'https://www.wdl.org/en/item/10690/manifest': { provider:'Biblioteca Nazionale Vittorio Emanuele III di Napoli' },
-//   'https://gallica.bnf.fr/iiif/ark:/12148/btv1b525002505/manifest.json': { provider:'Bibliothèque nationale de France' },
-//   'https://regisrob.fr/iiif/manifest/Dioscoride_Codex_vindobonensis.json': { provider:'regisrob.fr / Pl@ntUse images'},
-//   'https://demos.biblissima.fr/iiif/metadata/florus-dispersus/manifest.json': { provider:'Biblissima'},
-//   'https://manifests.britishart.yale.edu/Osbornfa1': { provider:'Yale University' },
-//   'https://iiif.bodleian.ox.ac.uk/iiif/manifest/b924ffc6-3b6d-40d7-99c3-f11a86f456df.json': { provider:'Bodleian Libraries' },
-//   'https://www.wdl.org/en/item/20149/manifest': { provider:'Biblioteca Nazionale Vittorio Emanuele III di Napoli' },
-//   'https://digi.vatlib.it/iiif/MSS_Vat.lat.3225/manifest.json': { provider:'Biblioteca Apostolica Vaticana' },
-//   'https://demos.biblissima.fr/iiif/metadata/BVMM/chateauroux/manifest.json': { provider:'Biblissima'},
-//   'https://purl.stanford.edu/hs631zg4177/iiif/manifest': { provider:'Stanford University Libraries' },
-//   'https://iiif.durham.ac.uk/manifests/trifle/32150/t1/mz/02/t1mz029p473h/manifest': { provider:'Durham Cathedral Library' },
-//   'https://gallica.bnf.fr/iiif/ark:/12148/btv1b10500687r/manifest.json': { provider:'Bibliothèque nationale de France' },
-//   'https://iiif.lib.harvard.edu/manifests/drs:5981093': { provider:'Harvard University' },
-//   'https://librarylabs.ed.ac.uk/iiif/manifest/mahabharataFinal.json': { provider:'University of Edinburgh'}
-// });
-
-// demo demos.biblissima.fr
-// config.windows.push(
-//   {
-//     manifestId: 'https://iiif.bodleian.ox.ac.uk/iiif/manifest/a4b2100c-003f-4868-8587-bc39b685ee47.json',
-//     canvasId: 'https://iiif.bodleian.ox.ac.uk/iiif/canvas/3021e338-c998-4696-b81c-477a0fdd6c60.json',
-//     //canvasIndex: 313,
-//     thumbnailNavigationPosition: 'off',
-//   },
-//   {
-//     manifestId: 'https://data.getty.edu/museum/api/iiif/1570/manifest.json',
-//     thumbnailNavigationPosition: 'off',
-//   },
-//   {
-//     manifestId: 'https://gallica.bnf.fr/iiif/ark:/12148/btv1b52500984v/manifest.json',
-//     canvasId: 'https://gallica.bnf.fr/iiif/ark:/12148/btv1b10507217r/canvas/f30',
-//     //canvasIndex: 190,
-//     thumbnailNavigationPosition: 'off',
-//   },
-//   {
-//     manifestId: 'https://gallica.bnf.fr/iiif/ark:/12148/btv1b8427228j/manifest.json',
-//     canvasId: 'https://gallica.bnf.fr/iiif/ark:/12148/btv1b520004567/canvas/f405',
-//     //canvasIndex: 219,
-//     thumbnailNavigationPosition: 'off',
-//   },
-// );
 
 Mirador.viewer(config, [
   miradorDownloadDialogPlugin,
