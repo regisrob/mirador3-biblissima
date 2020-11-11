@@ -87,6 +87,13 @@ const config = {
       search: true,
       layers: true,
     },
+    views: [
+      { key: 'single' /*behaviors: ['individuals']*/ },
+      { key: 'book' /*behaviors: ['paged']*/ },
+      { key: 'scroll', behaviors: ['continuous'] },
+      { key: 'gallery' },
+    ],
+    // mirador-image-tools plugin
     imageToolsEnabled: true,
     imageToolsOpen: false
   },
