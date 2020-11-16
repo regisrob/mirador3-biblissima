@@ -1,14 +1,14 @@
-import Mirador from "mirador/dist/es/src/index";
-import miradorDownloadPlugin from "mirador-dl-plugin/es/miradorDownloadPlugin";
-import miradorDownloadDialogPlugin from "mirador-dl-plugin/es/MiradorDownloadDialog";
+import Mirador from 'mirador/dist/es/src/index';
+import miradorDownloadPlugin from 'mirador-dl-plugin/es/miradorDownloadPlugin';
+import miradorDownloadDialogPlugin from 'mirador-dl-plugin/es/MiradorDownloadDialog';
 import { miradorImageToolsPlugin } from 'mirador-image-tools';
 
 
 let params = new URL(document.location).searchParams;
 let iiifResource = params.get('iiif-content') || params.get('manifest');
 let initializedManifest = params.get('manifest');
-let context = params.get("context"); // possible values are: descriptor, collection
-let theme = params.get("theme");
+let context = params.get('context'); // possible values are: descriptor, collection
+let theme = params.get('theme');
 
 const config = {
   id: 'm3',
@@ -78,7 +78,7 @@ const config = {
     allowFullscreen: true,
     sideBarOpen: true,
     sideBarPanel: null,
-    defaultView: 'gallery',
+    defaultView: 'single',
     panels: {
       info: true,
       attribution: true,
@@ -109,14 +109,6 @@ const config = {
   miradorDownloadPlugin: { restrictDownloadOnSizeDefinition: false }
 }
 
-// if (typeof manifestUris !== 'undefined' && manifestUris.length > 0) {
-//   for (var i = 0; i < manifestUris.length; i++) {
-//     config.catalog.push({
-//       manifestId: manifestUris[i],
-//     });
-//   }
-//   config.workspaceControlPanel.enabled = true;
-// }
 
 if (theme == 'light') {
   config.selectedTheme = 'light';
@@ -129,6 +121,8 @@ if (iiifResource) {
   config.catalog.push({
     manifestId: iiifResource,
   });
+
+  config.window.defaultView = 'gallery';
 
   // Case of a single resource (no workspace)
   if (context !== 'collection') {
