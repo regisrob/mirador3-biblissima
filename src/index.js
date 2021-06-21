@@ -114,8 +114,36 @@ if (theme == 'light') {
   config.selectedTheme = 'light';
 }
 
-// A iiif resource is passed as a url param
-if (iiifResource) {
+// resource is an encoded iiif content state
+if (iiifResource && !iiifResource.startsWith('http') && !iiifResource.startsWith('{')) {
+  if (!iiifResource.startsWith('http') && !iiifResource.startsWith('{')) {
+    let json = decodeContentState(iiifResource);
+    let contentState = JSON.parse(json);
+    let target = contentState.target;
+    if (Array.isArray(target)) {
+      config.workspaceControlPanel.enabled = true;
+      for (var i=0; i<target.length; i++) {
+        let item = target[i];
+        switch(item.type) {
+          case 'Manifest':
+            config.windows.push({
+              manifestId: item.id,
+            });
+          case 'Canvas':
+            if (item.partOf && item.partOf[0].type == 'Manifest') {
+              config.windows.push({
+                manifestId: item.partOf[0].id,
+                canvasId: item.id,
+              });
+            }
+        }
+      }
+    }
+  }
+}
+
+// resource is a iiif url
+if (iiifResource && iiifResource.startsWith('http')) {
 
   // populate the catalog
   config.catalog.push({
@@ -156,6 +184,25 @@ if (iiifResource) {
     // Object.assign(config, { galleryView: { height: 150 } });
     // config.galleryView.height = 150;
   }
+}
+
+function decodeContentState(encodedContentState) {
+  let base64url = restorePadding(encodedContentState);
+  let base64 = base64url.replace(/-/g, '+').replace(/_/g, '/');
+  let base64Decoded = atob(base64);               // using built in function
+  let uriDecoded = decodeURI(base64Decoded);      // using built in function
+  return uriDecoded;
+}
+
+function restorePadding(s) {
+  let pad = s.length % 4;
+  if (pad) {
+      if (pad === 1) {
+          throw new Error('InvalidLengthError: Input base64url string is the wrong length to determine padding');
+      }
+      s += new Array(5 - pad).join('=');
+  }
+  return s;
 }
 
 Mirador.viewer(config, [
