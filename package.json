@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "mirador": "file:../mirador",
-    "mirador-image-tools": "^0.10.0",
-    "mirador-dl-plugin": "0.13.0"
+    "mirador-image-tools": "file:../mirador-plugins/mirador-image-tools",
+    "mirador-dl-plugin": "file:../mirador-plugins/mirador-dl-plugin"
   },
   "devDependencies": {
     "@material-ui/core": "^4.11.0",
