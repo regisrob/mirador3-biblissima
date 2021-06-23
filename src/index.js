@@ -1,6 +1,7 @@
 import Mirador from 'mirador/dist/es/src/index';
 import miradorDownloadPlugin from 'mirador-dl-plugin/es/miradorDownloadPlugin';
 import miradorDownloadDialogPlugin from 'mirador-dl-plugin/es/MiradorDownloadDialog';
+import CustomGalleryButton from './plugin/CustomGalleryButton';
 import { miradorImageToolsPlugin } from 'mirador-image-tools';
 
 
@@ -208,5 +209,6 @@ function restorePadding(s) {
 Mirador.viewer(config, [
   miradorDownloadDialogPlugin,
   miradorDownloadPlugin,
+  miradorCustomGalleryButton,
   ...miradorImageToolsPlugin,
 ]);
