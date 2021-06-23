@@ -8,6 +8,11 @@ const baseConfig = mode => ({
   module: {
    rules: [
      {
+       test: /\.jsx?$/,
+       exclude: /node_modules/,
+       loader: "babel-loader"
+     },
+     {
        test: /\.css$/,
        use: [
          'style-loader',
@@ -33,6 +38,7 @@ const baseConfig = mode => ({
       react: path.resolve('./', 'node_modules', 'react'),
       'react-dom': path.resolve('./', 'node_modules', 'react-dom'),
     },
+    extensions: [".jsx", ".js"]
   }
 });
 
