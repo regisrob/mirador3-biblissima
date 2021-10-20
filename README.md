@@ -1,7 +1,6 @@
 
 # README
 
-Notes sur Trello : https://trello.com/c/XtQzkKfg/179-int%C3%A9gration-mirador-3
 
 ## Install dependencies:
 
