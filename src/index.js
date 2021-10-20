@@ -44,10 +44,10 @@ const config = {
       palette: {
         type: 'light',
         primary: {
-          main: '#3C474C'
+          main: '#2f4b60'
         },
         secondary: {
-          main: '#3C474C',
+          main: '#2f4b60',
         },
         shades: {
           dark: '#dddddd',
