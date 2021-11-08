@@ -35,8 +35,10 @@ const baseConfig = mode => ({
     alias: {
       '@material-ui/core': path.resolve('./', 'node_modules', '@material-ui/core'),
       '@material-ui/styles': path.resolve('./', 'node_modules', '@material-ui/styles'),
-      react: path.resolve('./', 'node_modules', 'react'),
+      'react': path.resolve('./', 'node_modules', 'react'),
       'react-dom': path.resolve('./', 'node_modules', 'react-dom'),
+      'react-redux': path.resolve('./', 'node_modules', 'react-redux'),
+      'mirador': path.resolve('./', 'node_modules', 'mirador'),
     },
     extensions: [".jsx", ".js"]
   }
