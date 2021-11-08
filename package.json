@@ -13,9 +13,9 @@
     "start": "NODE_ENV=development webpack-dev-server --open"
   },
   "dependencies": {
-    "mirador": "^3.2.0",
-    "mirador-dl-plugin": "^0.13.0",
-    "mirador-image-tools": "^0.11.0"
+    "mirador": "../mirador",
+    "mirador-dl-plugin": "../mirador-plugins/mirador-dl-plugin",
+    "mirador-image-tools": "../mirador-plugins/mirador-image-tools"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
@@ -24,6 +24,7 @@
     "@babel/preset-react": "^7.12.13",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.11.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.3.3",
     "babel-loader": "^8.2.2",
     "core-js": "^3.15.1",
