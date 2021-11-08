@@ -209,6 +209,6 @@ function restorePadding(s) {
 Mirador.viewer(config, [
   miradorDownloadDialogPlugin,
   miradorDownloadPlugin,
-  miradorCustomGalleryButton,
+  CustomGalleryButton,
   ...miradorImageToolsPlugin,
 ]);
