@@ -17,7 +17,7 @@ const _CustomGalleryButton = (props) => {
     const {TargetComponent, windowViewType, setWindowViewType, ...targetComponentProps} = props
 
     return (
-        <div>
+        <>
             <MiradorMenuButton
                 key="gallery"
                 onClick={() => { setWindowViewType(props.windowId, "gallery");}}
@@ -26,7 +26,7 @@ const _CustomGalleryButton = (props) => {
                 <GalleryViewIcon color={windowViewType === "gallery" ? 'secondary' : undefined}/>
             </MiradorMenuButton>
             <TargetComponent {...targetComponentProps}></TargetComponent>
-        </div>
+        </>
     )
 }
 
