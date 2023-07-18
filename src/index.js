@@ -3,18 +3,30 @@ import miradorDownloadPlugin from 'mirador-dl-plugin/es/miradorDownloadPlugin';
 import miradorDownloadDialogPlugin from 'mirador-dl-plugin/es/MiradorDownloadDialog';
 import CustomGalleryButton from './plugin/CustomGalleryButton';
 import { miradorImageToolsPlugin } from 'mirador-image-tools';
+//import imageCropperPlugin from 'mirador-imagecropper/es';
 
-
+// get URL params
 let params = new URL(document.location).searchParams;
 let iiifResource = params.get('iiif-content') || params.get('manifest');
 let initializedManifest = params.get('manifest');
-let context = params.get('context'); // possible values are: descriptor, collection
+let mode = params.get('context') || params.get('mode'); // possible values are: single | workspace (default)
 let theme = params.get('theme');
+let panel = params.get('panel');
 
-const config = {
+// set enabled plugins
+const plugins = [
+  miradorDownloadDialogPlugin,
+  miradorDownloadPlugin,
+  CustomGalleryButton,
+  ...miradorImageToolsPlugin,
+  //...imageCropperPlugin,
+];
+
+// set default config
+var config = {
   id: 'm3',
   language: 'fr',
-  selectedTheme: 'dark',
+  selectedTheme: 'light',
   themes: {
     dark: {
       palette: {
@@ -79,7 +91,7 @@ const config = {
     allowFullscreen: true,
     sideBarOpen: true,
     sideBarPanel: null,
-    defaultView: 'single',
+    defaultView: 'gallery',
     panels: {
       info: true,
       attribution: true,
@@ -96,7 +108,12 @@ const config = {
     ],
     // mirador-image-tools plugin
     imageToolsEnabled: true,
-    imageToolsOpen: false
+    imageToolsOpen: false,
+    // plugin image-cropper not functional, so disabled
+    // imageCropper: {
+    //   active: false,
+    //   enabled: true, 
+    // },
   },
   workspace: {
     showZoomControls: true,
@@ -107,22 +124,27 @@ const config = {
   },
   catalog: [],
   windows: [],
-  miradorDownloadPlugin: { restrictDownloadOnSizeDefinition: false }
+  requests: {
+    postprocessors: []
+  },
+  miradorDownloadPlugin: { restrictDownloadOnSizeDefinition: false },
 }
 
+// initialize Mirador instance
+const miradorInstance = Mirador.viewer(config, plugins);
 
-if (theme == 'light') {
-  config.selectedTheme = 'light';
+// set theme
+if (theme == 'dark') {
+  config.selectedTheme = 'dark';
 }
 
-// resource is an encoded iiif content state
+//------ case 1: resource is an encoded iiif content state
 if (iiifResource && !iiifResource.startsWith('http') && !iiifResource.startsWith('{')) {
   if (!iiifResource.startsWith('http') && !iiifResource.startsWith('{')) {
     let json = decodeContentState(iiifResource);
     let contentState = JSON.parse(json);
     let target = contentState.target;
     if (Array.isArray(target)) {
-      config.workspaceControlPanel.enabled = true;
       for (var i=0; i<target.length; i++) {
         let item = target[i];
         switch(item.type) {
@@ -143,55 +165,79 @@ if (iiifResource && !iiifResource.startsWith('http') && !iiifResource.startsWith
   }
 }
 
-// resource is a iiif url
+//------ case 2: resource is a iiif url
 if (iiifResource && iiifResource.startsWith('http')) {
 
-  // populate the catalog
-  config.catalog.push({
-    manifestId: iiifResource,
-  });
-
-  config.window.defaultView = 'gallery';
-
-  // Case of a single resource (no workspace)
-  if (context !== 'collection') {
-    config.window.allowClose = false;
-    config.workspace.type = 'single';
-    config.workspaceControlPanel.enabled = false;
+  // default mode (workspace): add resource to the catalog and display it in workspace mode
+  if (!mode) {
+    config.catalog.push({
+      manifestId: iiifResource,
+    });
     config.windows.push({
       manifestId: iiifResource,
     });
   }
 
-  if (context == 'collection') {
-    // if a manifest is passed
-    if (initializedManifest) {
-      // display it in a single window
-      config.windows.push({
-        manifestId: initializedManifest,
-      });
-    } else {
-      // display the collection window w/ modal
-      config.windows.push({
-        manifestId: iiifResource,
-      });
-    }
+  // single mode: a standalone resource, without workspace ("zen mode")
+  if (mode == 'single') {
+    config.workspace.type = 'single';
+    config.workspaceControlPanel.enabled = false;
+    config.window.allowClose = false;
+    config.catalog.push({
+      manifestId: iiifResource,
+    });
+    config.windows.push({
+      manifestId: iiifResource,
+    });
   }
-  
-  if (context == 'descriptor') {
+
+  // workspace mode (only used for "Book" pages on Biblissima portal)
+  // if resource is a IIIF Collection: bypass the collection modal and populate the catalog window directly with all the manifests (this is the same behavior as the old Mirador2 "Load window")
+  // WARNING: this mode is not suitable for large collections because of the performance penalty
+  if (mode == 'workspace') {
+    config.catalog.push({
+      manifestId: iiifResource,
+    });
+    config.workspace.isWorkspaceAddVisible = true; // Catalog/Workspace add window feature visible by default
+    // then postprocess to retrieve collection items and add them to the catalog window
+    config.requests.postprocessors.push((url, action) => {
+      if (action.type === "mirador/RECEIVE_MANIFEST") {
+        var json = action.manifestJson;
+        if (json['@type'] == 'sc:Collection') {
+          if (json.members || json.manifests) {
+            let items = json.members || json.manifests;
+            items.forEach((member) => {
+              let memberId = member['@id'] || member.id;
+              let addMember = Mirador.actions.addResource(memberId);
+              miradorInstance.store.dispatch(addMember);
+            });
+            // remove the initialized collection from the catalog
+            let removeCollection = Mirador.actions.removeResource(iiifResource);
+            miradorInstance.store.dispatch(removeCollection);
+          }
+        }
+        return {
+          ...action,
+          // manifestJson: {},
+        };
+      }
+    });
+  }
+
+  // panels display
+  if (panel == 'info') {
     config.window.defaultSideBarPanel = 'info'; // display the info panel by default
-    // config.thumbnailNavigation.defaultPosition = 'off';
-    // config.window.defaultView = 'gallery';
-    // Object.assign(config, { galleryView: { height: 150 } });
-    // config.galleryView.height = 150;
   }
+
+  // dispatch updated config
+  miradorInstance.store.dispatch(Mirador.actions.importConfig(config));
 }
 
 function decodeContentState(encodedContentState) {
   let base64url = restorePadding(encodedContentState);
   let base64 = base64url.replace(/-/g, '+').replace(/_/g, '/');
-  let base64Decoded = atob(base64);               // using built in function
-  let uriDecoded = decodeURI(base64Decoded);      // using built in function
+  let base64Decoded = atob(base64); // using built in function
+  let uriDecoded = decodeURI(base64Decoded); // using built in function
   return uriDecoded;
 }
 
@@ -205,10 +251,3 @@ function restorePadding(s) {
   }
   return s;
 }
-
-Mirador.viewer(config, [
-  miradorDownloadDialogPlugin,
-  miradorDownloadPlugin,
-  CustomGalleryButton,
-  ...miradorImageToolsPlugin,
-]);
