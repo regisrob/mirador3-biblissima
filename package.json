@@ -15,7 +15,11 @@
   "dependencies": {
     "mirador": "../mirador",
     "mirador-dl-plugin": "../mirador-plugins/mirador-dl-plugin",
-    "mirador-image-tools": "../mirador-plugins/mirador-image-tools"
+    "mirador-image-tools": "../mirador-plugins/mirador-image-tools",
+    "mirador-imagecropper": "../mirador-plugins/mirador-imagecropper",
+    "mirador-share-plugin": "../mirador-plugins/mirador-share-plugin",
+    "mirador-downloaddialog": "../mirador-plugins/mirador-downloaddialog",
+    "mirador-canvasnavigation": "../mirador-plugins/mirador-canvasnavigation"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
@@ -27,6 +31,8 @@
     "@material-ui/styles": "^4.11.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.3.3",
     "babel-loader": "^8.2.2",
+    "babel-runtime": "^6.26.0",
+    "classnames": "^2.2.6",
     "core-js": "^3.15.1",
     "css-loader": "^3.6.0",
     "eslint-plugin-react-hooks": "^4.2.0",
