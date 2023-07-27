@@ -1,9 +1,19 @@
 import Mirador from 'mirador/dist/es/src/index';
 import miradorDownloadPlugin from 'mirador-dl-plugin/es/miradorDownloadPlugin';
 import miradorDownloadDialogPlugin from 'mirador-dl-plugin/es/MiradorDownloadDialog';
-import CustomGalleryButton from './plugin/CustomGalleryButton';
+import downloadDialogPlugin from 'mirador-downloaddialog/es';
 import { miradorImageToolsPlugin } from 'mirador-image-tools';
+import CustomGalleryButton from './plugins/CustomGalleryButton';
+import CustomBrand from './components/CustomBrand';
+//import CustomWorkspaceOptionsButton from './components/CustomWorkspaceOptionsButton';
+//--- BSB canvas-navigation (=> fr translation not taken into account)
+//import canvasNavigationPlugin from 'mirador-canvasnavigation/es';
+//--- BSB cropper (=> not working)
 //import imageCropperPlugin from 'mirador-imagecropper/es';
+//--- Custom button "Share and download" from Stanford (=> translations not supported)
+//import shareMenuPlugin from './plugins/shareMenuPlugin';
+//import miradorShareDialogPlugin from 'mirador-share-plugin/es/MiradorShareDialog.js';
+//import miradorSharePlugin from 'mirador-share-plugin/es/miradorSharePlugin.js';
 
 // get URL params
 let params = new URL(document.location).searchParams;
@@ -15,10 +25,31 @@ let panel = params.get('panel');
 
 // set enabled plugins
 const plugins = [
-  miradorDownloadDialogPlugin,
-  miradorDownloadPlugin,
+  // miradorDownloadDialogPlugin,
+  // {
+  //   ...miradorDownloadPlugin,
+  //   target: 'WindowTopBarShareMenu',
+  // },
+  // shareMenuPlugin,
+  // {
+  //   ...miradorSharePlugin,
+  //   target: 'WindowTopBarShareMenu',
+  // },
+  // miradorShareDialogPlugin,
   CustomGalleryButton,
   ...miradorImageToolsPlugin,
+  ...downloadDialogPlugin,
+  {
+    mode: 'wrap',
+    component: CustomBrand,
+    target: 'Branding',
+  },
+  // {
+  //   mode: 'wrap',
+  //   component: CustomWorkspaceOptionsButton,
+  //   target: 'WorkspaceOptionsButton',
+  // }
+  //...canvasNavigationPlugin,
   //...imageCropperPlugin,
 ];
 
@@ -109,6 +140,9 @@ var config = {
     // mirador-image-tools plugin
     imageToolsEnabled: true,
     imageToolsOpen: false,
+    // canvasNavigation: {
+    //   handleCanvasLabel: (canvasLabel) => `${canvasLabel}...`,
+    // },
     // plugin image-cropper not functional, so disabled
     // imageCropper: {
     //   active: false,
@@ -127,16 +161,29 @@ var config = {
   requests: {
     postprocessors: []
   },
-  miradorDownloadPlugin: { restrictDownloadOnSizeDefinition: false },
+  //miradorDownloadPlugin: { restrictDownloadOnSizeDefinition: false },
+  // miradorSharePlugin: {
+  //   embedOption: {
+  //     enabled: false,
+  //   },
+  //   dragAndDropInfoLink: 'https://library.stanford.edu/projects/international-image-interoperability-framework/viewers',
+  //   shareLink: {
+  //     enabled: true,
+  //     manifestIdReplacePattern: [
+  //       /(purl.*.stanford.edu.*)\/iiif\/manifest(.json)?$/,
+  //       '$1',
+  //     ],
+  //   },
+  // },
 }
-
-// initialize Mirador instance
-const miradorInstance = Mirador.viewer(config, plugins);
 
 // set theme
 if (theme == 'dark') {
   config.selectedTheme = 'dark';
 }
+
+// initialize Mirador instance
+const miradorInstance = Mirador.viewer(config, plugins);
 
 //------ case 1: resource is an encoded iiif content state
 if (iiifResource && !iiifResource.startsWith('http') && !iiifResource.startsWith('{')) {
