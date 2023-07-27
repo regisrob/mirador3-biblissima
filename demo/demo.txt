@@ -1,0 +1,36 @@
+catalog: [
+   { 
+    manifestId: "https://iiif.bodleian.ox.ac.uk/iiif/manifest/a4b2100c-003f-4868-8587-bc39b685ee47.json",
+    provider: "Bodleian Libraries"
+   },
+   { 
+    manifestId: "https://data.getty.edu/museum/api/iiif/1570/manifest.json", 
+    provider: "The J. Paul Getty Museum"
+   },
+   { 
+    manifestId: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b52500984v/manifest.json", 
+    provider: "Bibliothèque nationale de France"
+   },
+   { 
+    manifestId: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8427228j/manifest.json", 
+    provider: "Bibliothèque nationale de France"
+   }
+],
+windows: [
+  {
+    manifestId: 'https://iiif.bodleian.ox.ac.uk/iiif/manifest/a4b2100c-003f-4868-8587-bc39b685ee47.json',
+    canvasId: 'https://iiif.bodleian.ox.ac.uk/iiif/canvas/3021e338-c998-4696-b81c-477a0fdd6c60.json',
+  },
+  {
+    manifestId: "https://data.getty.edu/museum/api/iiif/1570/manifest.json",
+    canvasId: "https://data.getty.edu/museum/api/iiif/id:1570/canvas/main",
+  },
+  {
+    manifestId: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b52500984v/manifest.json",
+    canvasId: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b52500984v/canvas/f191",
+  },
+  {
+    manifestId: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8427228j/manifest.json",
+    canvasId: "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8427228j/canvas/f220",
+  }
+],
