@@ -65,7 +65,9 @@ module.exports = (env, options) => {
   return {
     ...config,
     devServer: {
-      contentBase: './demo',
+      static: {
+        directory: path.join(__dirname, 'demo'),
+      },
       hot: true,
       port: 4444,
     },
