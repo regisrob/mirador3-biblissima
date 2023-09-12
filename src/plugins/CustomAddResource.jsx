@@ -4,11 +4,12 @@ import WorkspaceAdd from 'mirador/dist/cjs/src/containers/WorkspaceAdd';
 
 const CustomAddResource = (props) => {
     const {
-        showAddResource
+        showAddResource, classes
     } = props;
 
+    classes.fab = !showAddResource && classes.displayNone
     return (
-        showAddResource && <WorkspaceAdd/>
+        <WorkspaceAdd classes={classes}/>
     );
 }
 
