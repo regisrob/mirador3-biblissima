@@ -15,7 +15,7 @@ const CustomAddResource = (props) => {
 
 const mapStateToProps = (state, { windowId }) => {
     return {
-        showAddResource: state.config.CustomAddResource.showAddResource
+        showAddResource: state.config.customAddResource.showAddResource
     }
 };
 

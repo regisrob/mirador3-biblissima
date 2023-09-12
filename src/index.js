@@ -5,6 +5,7 @@ import downloadDialogPlugin from 'mirador-downloaddialog/es';
 import { miradorImageToolsPlugin } from 'mirador-image-tools';
 import CustomGalleryButton from './plugins/CustomGalleryButton';
 import CustomBrand from './components/CustomBrand';
+import CustomAddResource from './plugins/CustomAddResource';
 //import CustomWorkspaceOptionsButton from './components/CustomWorkspaceOptionsButton';
 //--- BSB canvas-navigation (=> fr translation not taken into account)
 //import canvasNavigationPlugin from 'mirador-canvasnavigation/es';
@@ -19,7 +20,7 @@ import CustomBrand from './components/CustomBrand';
 let params = new URL(document.location).searchParams;
 let iiifResource = params.get('iiif-content') || params.get('manifest');
 let initializedManifest = params.get('manifest');
-let mode = params.get('context') || params.get('mode'); // possible values are: single | workspace (default)
+let mode = params.get('context') || params.get('mode'); // possible values are: single | catalog
 let theme = params.get('theme');
 let panel = params.get('panel');
 
@@ -37,6 +38,7 @@ const plugins = [
   // },
   // miradorShareDialogPlugin,
   CustomGalleryButton,
+  CustomAddResource,
   ...miradorImageToolsPlugin,
   ...downloadDialogPlugin,
   {
@@ -161,6 +163,9 @@ var config = {
   requests: {
     postprocessors: []
   },
+  customAddResource: {
+    showAddResource: true,
+  }
   //miradorDownloadPlugin: { restrictDownloadOnSizeDefinition: false },
   // miradorSharePlugin: {
   //   embedOption: {
@@ -241,10 +246,11 @@ if (iiifResource && iiifResource.startsWith('http')) {
   // workspace mode (only used for "Book" pages on Biblissima portal)
   // if resource is a IIIF Collection: bypass the collection modal and populate the catalog window directly with all the manifests (this is the same behavior as the old Mirador2 "Load window")
   // WARNING: this mode is not suitable for large collections because of the performance penalty
-  if (mode == 'workspace') {
+  if (mode == 'catalog') {
     config.catalog.push({
       manifestId: iiifResource,
     });
+    config.customAddResource.showAddResource = false;
     config.workspace.isWorkspaceAddVisible = true; // Catalog/Workspace add window feature visible by default
     // then postprocess to retrieve collection items and add them to the catalog window
     config.requests.postprocessors.push((url, action) => {
